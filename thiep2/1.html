@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Đặc Biệt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="envelope" onclick="openEnvelope()">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body"></div>
+        <div class="heart"></div>
+    </div>
+
+    <div class="card" id="card">
+        <div class="card-inner">
+            <div class="card-front">
+                <h1>Thiệp Mời Đặc Biệt</h1>
+                <p>Nhấn vào phong bì để mở</p>
+            </div>
+            <div class="card-back">
+                <div class="header">
+                    <h2>Lời Mời Từ Trái Tim ❤️</h2>
+                </div>
+                <div class="content">
+                    <p class="greeting">Gửi <span class="name-her" contenteditable="true">Ngọc Anh</span>,</p>
+                    <p class="message">Tôi, <span class="name-me" contenteditable="true">Minh</span>, chân thành muốn mời bạn đi chơi vào cuối tuần này.</p>
+                    <div class="reason">
+                        <h3>Lý do:</h3>
+                        <p contenteditable="true">Vì chúng ta đã lâu không có dịp gặp nhau, và tôi muốn tạo nên những kỷ niệm đẹp bên bạn.</p>
+                    </div>
+                    <div class="persuasion">
+                        <h3>Lời nhắn:</h3>
+                        <p contenteditable="true">Mỗi khoảnh khắc bên bạn đều khiến tôi cảm thấy hạnh phúc. Hãy cho tôi cơ hội được làm bạn cười và tạo nên ngày đáng nhớ nhé!</p>
+                    </div>
+                    <div class="signature">
+                        <p>Trân trọng,</p>
+                        <p class="sign" contenteditable="true">Minh</p>
+                    </div>
+                </div>
+                <button class="send-btn" onclick="sendInvitation()">Gửi Lời Mời</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hearts-container"></div>
+
+    <audio id="heartSound" src="https://assets.mixkit.co/sfx/preview/mixkit-romantic-heart-beat-1490.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

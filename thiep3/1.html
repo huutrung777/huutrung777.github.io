@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thiệp Mời Lãng Mạn</title>
+  <style>
+    #heart-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  opacity: 0.8;
+  animation: flyUp 5s linear forwards;
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+    :root {
+      --pink: #f7c8e0;
+      --soft-pink: #ffe0f0;
+      --highlight: #ff8fab;
+      --hover: #ff4f84;
+      --bg: #fff0f5;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--soft-pink), var(--bg));
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #555;
+      margin: 6px 0;
+    }
+
+    .buttons, .confirm-buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: var(--highlight);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 22px;
+      margin: 10px 6px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    button:hover {
+      background-color: var(--hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    #back-button {
+      background-color: #b8c1ec;
+      display: none;
+    }
+
+    #back-button:hover {
+      background-color: #92a1d1;
+    }
+
+    .image-container {
+      margin-top: 20px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      border-radius: 16px;
+      display: none;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      animation: fadeIn 0.8s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>💌 Thiệp Mời Người Đẹp 🩷</h2>
+    <p><strong>Người gửi:</strong> Hứa Hữu Trung</p>
+    <p><strong>Người nhận:</strong> Kim Ngân 🩷</p>
+    <p><strong>Địa điểm:</strong> Tuỳ Ngân chọn – miễn là đi cùng nhau!</p>
+    <p><strong>Thời gian:</strong> Thứ Ba, 10/06/2025 – 19:00</p>
+    <p><strong>Lời mời:</strong> Thứ 3 này, nếu chị rảnh, mình đi chơi nha.Không cần gì cầu kỳ, chỉ cần chị đi cùng em là đủ vui rồi. Em có vài ý tưởng, nhưng quyết định là ở chị.Chỉ cần chị gật đầu, còn lại cứ để em lo 😊</p>
+
+    <div class="buttons">
+      <button onclick="showImage('movie')">🎬 Xem phim</button>
+      <button onclick="showImage('pizza')">🍕 Pizza</button>
+    </div>
+
+    <div class="confirm-buttons">
+      <button onclick="showImage('yes')">✅ Đồng ý</button>
+      <button onclick="showImage('no')">❌ Không đồng ý</button>
+    </div>
+
+    <div class="image-container">
+     <img id="movie" src="494866739_1949644952505719_8262838657416249218_n.jpg" alt="Xem phim" />
+      <img id="pizza" src="unnamed.webp" alt="Pizza" />
+      <img id="yes" src="z6690384980123_e6710894b1db089c3ccbead5109fadbb.jpg" alt="Đồng ý" />
+      <img id="no" src="z6602150650885_4a42c7c860bcb0f82105b189c9a5e524.jpg" alt="Không đồng ý" />
+    </div>
+
+    <button id="back-button" onclick="goBack()">🔙 Quay lại</button>
+  </div>
+  <div id="heart-container"></div>
+
+  <script>
+    function showImage(option) {
+      ['movie', 'pizza', 'yes', 'no'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+
+      document.getElementById(option).style.display = 'block';
+      document.querySelector('.buttons').style.display = 'none';
+      document.querySelector('.confirm-buttons').style.display = 'none';
+      document.getElementById('back-button').style.display = 'inline-block';
+    }
+
+    function goBack() {
+      ['movie', 'pizza', 'yes', 'no'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+
+      document.querySelector('.buttons').style.display = 'block';
+      document.querySelector('.confirm-buttons').style.display = 'block';
+      document.getElementById('back-button').style.display = 'none';
+    }
+     const heartContainer = document.getElementById('heart-container');
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+    heart.innerHTML = '💖';
+    heartContainer.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 500);
+  </script>
+</body>
+</html>

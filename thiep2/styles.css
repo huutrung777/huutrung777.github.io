@@ -1,0 +1,226 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    transform-style: preserve-3d;
+    z-index: 10;
+}
+
+.envelope-flap {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #f8d7da;
+    top: 0;
+    transform-origin: top;
+    transition: all 0.8s ease;
+    z-index: 3;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.envelope-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f8d7da;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+.heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #ff6b6b;
+    transform: rotate(45deg);
+    z-index: 1;
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.heart:before, .heart:after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -20px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -20px;
+}
+
+.card {
+    position: absolute;
+    width: 280px;
+    height: 380px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+    opacity: 0;
+    transition: all 1s ease;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.card.show {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+
+.card-front {
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.card-front h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #ff6b6b;
+    margin-top: 40%;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.greeting, .message {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.reason, .persuasion {
+    margin-bottom: 15px;
+    background: #fff5f5;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.reason h3, .persuasion h3 {
+    color: #ff6b6b;
+    margin-top: 0;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.sign {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #ff6b6b;
+}
+
+.send-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: auto;
+    align-self: center;
+    transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+    background: #ff4757;
+    transform: scale(1.05);
+}
+
+.name-me, .name-her, [contenteditable="true"] {
+    color: #ff6b6b;
+    font-weight: bold;
+    border-bottom: 1px dashed #ff6b6b;
+    padding-bottom: 2px;
+}
+
+.hearts-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart-particle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff6b6b;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+.heart-particle:before, .heart-particle:after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart-particle:before {
+    top: -7.5px;
+    left: 0;
+}
+
+.heart-particle:after {
+    top: 0;
+    left: -7.5px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
