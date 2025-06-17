@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thiệp Mời Đặc Biệt</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fff0f6, #f8bbd0);
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      max-width: 420px;
+      text-align: center;
+      z-index: 1;
+      animation: fadeIn 1.2s ease-in-out;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .card h1 {
+      color: #e91e63;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .card .heart {
+      font-size: 32px;
+      color: #e91e63;
+      animation: heartbeat 1s infinite;
+      margin: 10px 0;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.2); }
+      50% { transform: scale(1); }
+    }
+
+    .card p {
+      color: #444;
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .info {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .info b {
+      color: #e91e63;
+    }
+
+    .btn-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #d81b60;
+    }
+
+    .hover-msg {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fce4ec;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      color: #e91e63;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-wrapper:hover .hover-msg {
+      display: block;
+    }
+
+    .heart-fall {
+      position: absolute;
+      top: -50px;
+      font-size: 20px;
+      color: #e91e63;
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .popup-img {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Trái tim rơi -->
+<script>
+  const heartCount = 30;
+  for (let i = 0; i < heartCount; i++) {
+    let heart = document.createElement('div');
+    heart.classList.add('heart-fall');
+    heart.innerText = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+    heart.style.fontSize = (16 + Math.random() * 10) + 'px';
+    document.body.appendChild(heart);
+  }
+</script>
+
+<!-- Popup hình ảnh khi nhấn nút -->
+<img id="popup" class="popup-img" src="card-qrcode.png" alt="Buzz BBQ" />
+
+<!-- Nội dung thiệp -->
+<div class="card">
+  <h1>Thiệp mời dành riêng cho Ngân 🎀</h1>
+  <div class="heart">💖</div>
+ 
+  <div class="info">
+    <p><b>Người mời:</b> Bi 🐶</p>
+    <p><b>Người nhận:</b> Ngân 💌</p>
+    <p><b>Thời gian:</b> 20h00 - 17/06/2025</p>
+    <p><b>Địa điểm:</b> Buzz-bbq & beer 🍸</p>
+  </div>
+  <p>
+  Sinh nhật của người đẹp,<br/>
+  em chỉ muốn có mặt bên cạnh,<br/>
+  cùng chị ăn một bữa ngon,<br/>
+  và đi đâu đó chị thấy vui là được. 🙂<br>
+</p>
+
+  <div class="btn-wrapper">
+    <span class="hover-msg">Không được từ chối 😜</span>
+    <button class="btn" onclick="showImage()">Đồng ý nha 💫</button>
+  </div>
+</div>
+
+<script>
+  function showImage() {
+    const popup = document.getElementById("popup");
+    popup.style.display = "block";
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 4000); // Hiển thị trong 4 giây
+  }
+</script>
+
+</body>
+</html>
